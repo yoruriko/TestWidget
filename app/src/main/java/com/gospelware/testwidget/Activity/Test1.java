@@ -1,6 +1,7 @@
 package com.gospelware.testwidget.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -61,12 +62,22 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
 
     @OnClick(R.id.box)
     void clickBox() {
-        animateEditText(tv.isShown());
+        if (!isEditing)
+            animateEditText(true);
+    }
+
+    @OnClick(R.id.button_image)
+    void clickImage() {
+        if (isEditing)
+            edt.setText("");
     }
 
     private List<String> list;
     private Test1Adapter mAdapter;
     private boolean isEditing;
+
+    private int currentEdit = -1;
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -76,7 +87,12 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
             } else {
                 imm.hideSoftInputFromWindow(edt.getWindowToken(), 0);
                 if (msg.obj != null) {
-                    list.add(0, (String) msg.obj);
+                    if (currentEdit == -1)
+                        list.add(0, (String) msg.obj);
+                    else {
+                        list.set(currentEdit, (String) msg.obj);
+                        currentEdit = -1;
+                    }
                     mAdapter.notifyDataSetChanged();
                 }
             }
@@ -116,15 +132,19 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
 
         if (view.isMenuOpen())
             view.closeMenus();
-        else
+        else {
+            Intent it=new Intent(this,DragAndDropActivity.class);
+            startActivity(it);
             Toast.makeText(this, "Content :" + position, Toast.LENGTH_SHORT).show();
-
+        }
     }
 
     @Override
     public void onItemEditClicked(SlidingView view, int position) {
 
         view.closeMenus();
+        currentEdit = position;
+        animateEditText(true);
         Toast.makeText(this, "Edit :" + list.get(position), Toast.LENGTH_SHORT).show();
 
     }
@@ -180,7 +200,7 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
 
         box.setClickable(false);
         view.setVisibility(View.VISIBLE);
-        mask.setVisibility(isEditing?View.VISIBLE:View.GONE);
+        mask.setVisibility(isEditing ? View.VISIBLE : View.GONE);
 
         showHideKeyBoard();
 
@@ -202,6 +222,8 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
 
     public void showHideKeyBoard() {
         if (isEditing) {
+            if (currentEdit != -1)
+                edt.setText(list.get(currentEdit));
             edt.requestFocus();
             mHandler.obtainMessage(0).sendToTarget();
         } else {
@@ -213,7 +235,6 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
             edt.setText("");
         }
     }
-
 
 
 }

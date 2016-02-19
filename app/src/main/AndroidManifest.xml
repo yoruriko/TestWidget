@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.Test1" android:theme="@style/NoSplitMotion"/>
+        <activity android:name=".Activity.DragAndDropActivity"/>
     </application>
 
 </manifest>
