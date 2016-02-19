@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
+    <include layout="@layout/add_item_layout" />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/box"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/profileBackgroundDark" />
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/mask"
+        android:visibility="gone"
+        android:background="@color/black50"
+        android:layout_below="@id/box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

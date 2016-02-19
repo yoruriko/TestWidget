@@ -8,4 +8,8 @@
     <color name="genderBlue">#17B0CB</color>
     <color name="genderRed">#C10039</color>
     <color name="textColorWhite">#FFFFFF</color>
+
+    <color name="profileBackgroundDark">#181818</color>
+    <color name="profileBackgroundLight">#222222</color>
+    <color name="black50">#50000000</color>
 </resources>
