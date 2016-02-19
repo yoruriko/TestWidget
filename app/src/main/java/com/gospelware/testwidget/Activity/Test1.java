@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Toast;
 
 import com.gospelware.testwidget.Adapter.Test1Adapter;
@@ -43,6 +42,15 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
         }
 
         mAdapter = new Test1Adapter(list, this);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if(dy>5)
+                    mAdapter.parentMove();
+            }
+        });
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
@@ -62,14 +70,14 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
     public void onItemEditClicked(SlidingView view, int position) {
 
         view.closeMenus();
-        Toast.makeText(this, "Edit :" + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Edit :" + list.get(position), Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onItemDeleteClicked(int position) {
+        Toast.makeText(this, "Deleted :" + list.get(position), Toast.LENGTH_SHORT).show();
         list.remove(position);
         mAdapter.notifyItemRemoved(position);
-        Toast.makeText(this, "Deleted :" + position, Toast.LENGTH_SHORT).show();
     }
 }

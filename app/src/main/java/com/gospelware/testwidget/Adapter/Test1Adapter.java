@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gospelware.testwidget.R;
 import com.gospelware.testwidget.Widget.SlidingView;
+import com.gospelware.testwidget.Widget.Utils;
 
 import java.util.List;
 
@@ -19,14 +19,35 @@ import butterknife.ButterKnife;
 /**
  * Created by ricogao on 18/02/2016.
  */
-public class Test1Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class Test1Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements SlidingView.SlidingMenuOpenListener {
 
     private List<String> list;
     private OnSlidingItemClickListener mListener;
+    private SlidingView openMenu;
 
     public Test1Adapter(List<String> list, OnSlidingItemClickListener mListener) {
         this.list = list;
         this.mListener = mListener;
+    }
+
+    @Override
+    public void onMenuOpen(SlidingView view) {
+        this.openMenu = view;
+    }
+
+    @Override
+    public void onMenuMove(SlidingView view) {
+        if (openMenu != null && openMenu != view) {
+            openMenu.closeMenus();
+            openMenu = null;
+        }
+    }
+
+    public void parentMove() {
+        if (openMenu != null) {
+            openMenu.closeMenus();
+            openMenu = null;
+        }
     }
 
     class Test1ViewHolder extends RecyclerView.ViewHolder {
@@ -45,6 +66,7 @@ public class Test1Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public Test1ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            content.getLayoutParams().width = Utils.getScreenWidth(itemView.getContext());
 
         }
     }
@@ -69,26 +91,35 @@ public class Test1Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final Test1ViewHolder vh = (Test1ViewHolder) holder;
+
+        vh.slidingView.setSlidingMenuOpenListener(this);
+
         vh.itemPosition = position;
+
+        vh.content.setText(list.get(position));
 
         vh.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onItemDeleteClicked(vh.itemPosition);
+                mListener.onItemDeleteClicked(vh.getLayoutPosition());
             }
         });
 
         vh.buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onItemEditClicked(vh.slidingView, vh.itemPosition);
+                mListener.onItemEditClicked(vh.slidingView, vh.getLayoutPosition());
             }
         });
 
         vh.content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onItemContentClicked(vh.slidingView, vh.itemPosition);
+                if (openMenu != null) {
+                    openMenu.closeMenus();
+                    openMenu = null;
+                } else
+                    mListener.onItemContentClicked(vh.slidingView, vh.getLayoutPosition());
             }
         });
 

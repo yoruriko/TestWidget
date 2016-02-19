@@ -20,16 +20,18 @@ public class SlidingView extends HorizontalScrollView {
     private static final int DELETE_FLAG = 222;
     private static final int NO_FLAG = -1;
 
-    private boolean isMeasured = false;
 
     private boolean isDeleteOpen;
     private boolean isEditOpen;
+    private boolean isMeasured;
 
     private Button buttonEdit;
     private Button buttonDelete;
     private TextView textView;
 
     private int buttonWidth;
+
+    private SlidingMenuOpenListener mListener;
 
 
     public SlidingView(Context context) {
@@ -45,32 +47,41 @@ public class SlidingView extends HorizontalScrollView {
         this.setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
+    public interface SlidingMenuOpenListener {
+        void onMenuOpen(SlidingView view);
+        void onMenuMove(SlidingView view);
+    }
+
+    public void setSlidingMenuOpenListener(SlidingMenuOpenListener listener) {
+        this.mListener = listener;
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        initMeasure();
-        isMeasured = true;
     }
 
     public void initMeasure() {
-        textView = (TextView) findViewById(R.id.content);
-        textView.getLayoutParams().width = Utils.getScreenWidth(getContext());
+        if (!isMeasured) {
 
+            textView = (TextView) findViewById(R.id.content);
+            buttonDelete = (Button) findViewById(R.id.button_delete);
+            buttonEdit = (Button) findViewById(R.id.button_edit);
 
-        buttonDelete = (Button) findViewById(R.id.button_delete);
-        buttonEdit = (Button) findViewById(R.id.button_edit);
+            isMeasured = true;
+        }
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        if (changed) {
 
-            this.scrollTo(buttonEdit.getWidth(), 0);
+        initMeasure();
 
-            buttonWidth = Math.max(buttonDelete.getWidth(), buttonEdit.getWidth());
+        this.scrollTo(buttonEdit.getWidth(), 0);
 
-        }
+        buttonWidth = Math.max(buttonDelete.getWidth(), buttonEdit.getWidth());
+
     }
 
 
@@ -89,8 +100,22 @@ public class SlidingView extends HorizontalScrollView {
 
     public void setMenuFlag(int flag) {
 
-        isEditOpen = (flag == EDIT_FLAG);
-        isDeleteOpen = (flag == DELETE_FLAG);
+        if (flag == EDIT_FLAG) {
+
+            isEditOpen = true;
+            mListener.onMenuOpen(this);
+
+        } else if (flag == DELETE_FLAG) {
+
+            isDeleteOpen = true;
+            mListener.onMenuOpen(this);
+
+        } else {
+
+            isEditOpen = false;
+            isDeleteOpen = false;
+
+        }
 
         Log.i(TAG, "editFlag=" + isEditOpen + " ,deleteFlag=" + isDeleteOpen);
     }
@@ -107,6 +132,9 @@ public class SlidingView extends HorizontalScrollView {
         int action = ev.getAction();
 
         switch (action) {
+            case MotionEvent.ACTION_MOVE:
+                mListener.onMenuMove(this);
+                break;
             case MotionEvent.ACTION_UP:
                 changeScrollX();
                 return true;
@@ -125,7 +153,7 @@ public class SlidingView extends HorizontalScrollView {
             smoothScrollTo(2 * buttonWidth, 0);
 
             setMenuFlag(DELETE_FLAG);
-            
+
         } else if (dx >= (buttonWidth / 2)) {
 
             closeMenus();
