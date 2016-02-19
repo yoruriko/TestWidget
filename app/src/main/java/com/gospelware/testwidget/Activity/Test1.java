@@ -180,7 +180,9 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
 
         box.setClickable(false);
         view.setVisibility(View.VISIBLE);
-        mask.setVisibility(View.VISIBLE);
+        mask.setVisibility(isEditing?View.VISIBLE:View.GONE);
+
+        showHideKeyBoard();
 
         image.animate()
                 .rotationBy(rotation)
@@ -190,12 +192,6 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
         view.animate()
                 .alpha(1f)
                 .setDuration(duration)
-                .withEndAction(new Runnable() {
-                    @Override
-                    public void run() {
-                        showHideKeyBoard();
-                    }
-                })
                 .start();
     }
 
