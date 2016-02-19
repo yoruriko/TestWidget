@@ -56,16 +56,12 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
 
     @OnClick(R.id.mask)
     void clickMask() {
-        hideEditText();
+        animateEditText(false);
     }
 
     @OnClick(R.id.box)
     void clickBox() {
-        if (tv.isShown()) {
-            showEditText();
-        } else {
-            hideEditText();
-        }
+        animateEditText(tv.isShown());
     }
 
     private List<String> list;
@@ -144,96 +140,84 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
     public void onBackPressed() {
 
         if (isEditing) {
-            hideEditText();
+            animateEditText(false);
             return;
         }
         super.onBackPressed();
     }
 
-    public void showEditText() {
 
-        isEditing = true;
+    public void animateEditText(boolean open) {
+        isEditing = open;
 
-        tv.animate()
+        int duration = 300;
+        final View hideView = isEditing ? tv : edt;
+        final View showView = isEditing ? edt : tv;
+
+
+        hideView.animate()
                 .alpha(0f)
+                .setDuration(duration)
                 .withStartAction(new Runnable() {
                     @Override
                     public void run() {
-                        box.setClickable(false);
-                        edt.setVisibility(View.VISIBLE);
-                        mask.setVisibility(View.VISIBLE);
-                        image.animate()
-                                .rotationBy(45)
-                                .setDuration(300)
-                                .start();
-                        edt.animate()
-                                .alpha(1f)
-                                .setDuration(300)
-                                .withEndAction(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        edt.requestFocus();
-                                        mHandler.obtainMessage(0).sendToTarget();
-                                    }
-                                })
-                                .start();
+                        startAction(showView);
                     }
                 })
                 .withEndAction(new Runnable() {
                     @Override
                     public void run() {
-                        tv.setVisibility(ImageView.GONE);
-                        box.setClickable(true);
+                        endAction(hideView);
                     }
                 })
-                .setDuration(300)
                 .start();
     }
 
-    public void hideEditText() {
+    public void startAction(View view) {
 
-        isEditing = false;
+        int duration = 300;
+        int rotation = isEditing ? 45 : -45;
 
-        edt.animate()
-                .alpha(0f)
-                .setDuration(300)
-                .withStartAction(
-                        new Runnable() {
-                            @Override
-                            public void run() {
+        box.setClickable(false);
+        view.setVisibility(View.VISIBLE);
+        mask.setVisibility(View.VISIBLE);
 
-                                box.setClickable(false);
-                                tv.setVisibility(View.VISIBLE);
-                                mask.setVisibility(View.GONE);
-                                image.animate()
-                                        .rotationBy(-45)
-                                        .setDuration(300)
-                                        .start();
-                                tv.animate()
-                                        .alpha(1)
-                                        .setDuration(300)
-                                        .withEndAction(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (TextUtils.isEmpty(edt.getText()))
-                                                    mHandler.obtainMessage(1).sendToTarget();
-                                                else
-                                                    mHandler.obtainMessage(1, edt.getText().toString()).sendToTarget();
-                                                edt.clearFocus();
-                                                edt.setText("");
-                                            }
-                                        })
-                                        .start();
-                            }
-                        }
-                )
+        image.animate()
+                .rotationBy(rotation)
+                .setDuration(duration)
+                .start();
+
+        view.animate()
+                .alpha(1f)
+                .setDuration(duration)
                 .withEndAction(new Runnable() {
                     @Override
                     public void run() {
-                        edt.setVisibility(View.GONE);
-                        box.setClickable(true);
+                        showHideKeyBoard();
                     }
                 })
                 .start();
     }
+
+    public void endAction(View view) {
+        view.setVisibility(View.GONE);
+        box.setClickable(true);
+    }
+
+    public void showHideKeyBoard() {
+        if (isEditing) {
+            edt.requestFocus();
+            mHandler.obtainMessage(0).sendToTarget();
+        } else {
+            if (TextUtils.isEmpty(edt.getText()))
+                mHandler.obtainMessage(1).sendToTarget();
+            else
+                mHandler.obtainMessage(1, edt.getText().toString()).sendToTarget();
+            edt.clearFocus();
+            edt.setText("");
+        }
+    }
+
+
+
 }

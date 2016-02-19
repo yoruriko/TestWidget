@@ -42,27 +42,23 @@
       <file leaf-file-name="Test1.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gospelware/testwidget/Activity/Test1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.858407">
-              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.5410873">
+              <caret line="95" column="34" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
               <folding>
                 <element signature="e#1443#1444#0" expanded="true" />
-                <element signature="e#1473#1474#0" expanded="true" />
-                <element signature="e#1767#2344#0" expanded="true" />
-                <element signature="e#2343#2344#0" expanded="true" />
-                <element signature="e#2754#2998#0" expanded="true" />
-                <element signature="e#2997#2998#0" expanded="true" />
-                <element signature="e#4179#5203#0" expanded="true" />
-                <element signature="e#4788#5120#0" expanded="true" />
-                <element signature="e#5119#5120#0" expanded="true" />
-                <element signature="e#5202#5203#0" expanded="true" />
-                <element signature="e#5236#5468#0" expanded="true" />
-                <element signature="e#5467#5468#0" expanded="true" />
-                <element signature="e#5740#7262#0" expanded="true" />
-                <element signature="e#6449#7155#0" expanded="true" />
-                <element signature="e#7154#7155#0" expanded="true" />
-                <element signature="e#7261#7262#0" expanded="true" />
-                <element signature="e#7312#7540#0" expanded="true" />
-                <element signature="e#7539#7540#0" expanded="true" />
+                <element signature="e#1481#1482#0" expanded="true" />
+                <element signature="e#1527#1528#0" expanded="true" />
+                <element signature="e#1572#1573#0" expanded="true" />
+                <element signature="e#1703#2280#0" expanded="true" />
+                <element signature="e#2279#2280#0" expanded="true" />
+                <element signature="e#2690#2934#0" expanded="true" />
+                <element signature="e#2933#2934#0" expanded="true" />
+                <element signature="e#4317#4490#0" expanded="true" />
+                <element signature="e#4489#4490#0" expanded="true" />
+                <element signature="e#4523#4694#0" expanded="true" />
+                <element signature="e#4693#4694#0" expanded="true" />
+                <element signature="e#5211#5381#0" expanded="true" />
+                <element signature="e#5380#5381#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2288,7 +2284,7 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923833" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32923833" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3996724" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -2304,7 +2300,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24980143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32923833" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923833" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2439,27 +2435,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gospelware/testwidget/Activity/Test1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.858407">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        <state vertical-scroll-proportion="-1.5410873">
+          <caret line="95" column="34" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
           <folding>
             <element signature="e#1443#1444#0" expanded="true" />
-            <element signature="e#1473#1474#0" expanded="true" />
-            <element signature="e#1767#2344#0" expanded="true" />
-            <element signature="e#2343#2344#0" expanded="true" />
-            <element signature="e#2754#2998#0" expanded="true" />
-            <element signature="e#2997#2998#0" expanded="true" />
-            <element signature="e#4179#5203#0" expanded="true" />
-            <element signature="e#4788#5120#0" expanded="true" />
-            <element signature="e#5119#5120#0" expanded="true" />
-            <element signature="e#5202#5203#0" expanded="true" />
-            <element signature="e#5236#5468#0" expanded="true" />
-            <element signature="e#5467#5468#0" expanded="true" />
-            <element signature="e#5740#7262#0" expanded="true" />
-            <element signature="e#6449#7155#0" expanded="true" />
-            <element signature="e#7154#7155#0" expanded="true" />
-            <element signature="e#7261#7262#0" expanded="true" />
-            <element signature="e#7312#7540#0" expanded="true" />
-            <element signature="e#7539#7540#0" expanded="true" />
+            <element signature="e#1481#1482#0" expanded="true" />
+            <element signature="e#1527#1528#0" expanded="true" />
+            <element signature="e#1572#1573#0" expanded="true" />
+            <element signature="e#1703#2280#0" expanded="true" />
+            <element signature="e#2279#2280#0" expanded="true" />
+            <element signature="e#2690#2934#0" expanded="true" />
+            <element signature="e#2933#2934#0" expanded="true" />
+            <element signature="e#4317#4490#0" expanded="true" />
+            <element signature="e#4489#4490#0" expanded="true" />
+            <element signature="e#4523#4694#0" expanded="true" />
+            <element signature="e#4693#4694#0" expanded="true" />
+            <element signature="e#5211#5381#0" expanded="true" />
+            <element signature="e#5380#5381#0" expanded="true" />
           </folding>
         </state>
       </provider>
