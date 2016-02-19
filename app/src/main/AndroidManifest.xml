@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.Test1" />
+        <activity android:name=".Activity.Test1" android:theme="@style/NoSplitMotion"/>
     </application>
 
 </manifest>
