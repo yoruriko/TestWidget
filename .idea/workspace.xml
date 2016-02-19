@@ -37,11 +37,11 @@
       <file leaf-file-name="Test1.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gospelware/testwidget/Activity/Test1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48798987">
-              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.33628318">
+              <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
               <folding>
-                <element signature="e#1186#1417#0" expanded="true" />
-                <element signature="e#1416#1417#0" expanded="true" />
+                <element signature="e#1186#1427#0" expanded="true" />
+                <element signature="e#1426#1427#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2135,14 +2135,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gospelware/testwidget/Activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gospelware/testwidget/Widget/SlidingView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2153,6 +2145,14 @@
             <element signature="e#2312#2313#0" expanded="true" />
             <element signature="e#2361#2362#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gospelware/testwidget/Activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2172,11 +2172,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gospelware/testwidget/Activity/Test1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48798987">
-          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.33628318">
+          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
           <folding>
-            <element signature="e#1186#1417#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
+            <element signature="e#1186#1427#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
           </folding>
         </state>
       </provider>

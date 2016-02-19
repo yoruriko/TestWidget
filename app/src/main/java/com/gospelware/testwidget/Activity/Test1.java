@@ -46,7 +46,7 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if(dy>5)
+                if(Math.abs(dy)>5)
                     mAdapter.parentMove();
             }
         });
