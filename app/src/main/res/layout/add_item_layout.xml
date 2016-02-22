@@ -34,8 +34,10 @@
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/button_image"
         android:layout_centerVertical="true"
+        android:inputType="text"
+        android:imeOptions="actionDone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="80dp" />
 
 
 </RelativeLayout>

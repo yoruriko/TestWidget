@@ -10,8 +10,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -55,6 +57,9 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
     @Bind(R.id.mask)
     FrameLayout mask;
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     @OnClick(R.id.mask)
     void clickMask() {
         animateEditText(false);
@@ -68,8 +73,14 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
 
     @OnClick(R.id.button_image)
     void clickImage() {
-        if (isEditing)
-            edt.setText("");
+        if (isEditing) {
+            if (TextUtils.isEmpty(edt.getText()))
+                animateEditText(false);
+            else
+                edt.setText("");
+
+        } else
+            animateEditText(true);
     }
 
     private List<String> list;
@@ -102,9 +113,33 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test1_layout);
+        setContentView(R.layout.test1_main);
         ButterKnife.bind(this);
 
+        initView();
+        initList();
+    }
+
+    public  void  initView(){
+
+        toolbar.setBackgroundResource(R.drawable.toolbarmask);
+        toolbar.setTitle("Itineraries");
+        setSupportActionBar(toolbar);
+
+        edt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    animateEditText(false);
+                    return true;
+                }
+
+                return false;
+            }
+        });
+    }
+    public  void initList(){
 
         list = new ArrayList<>();
 
@@ -133,7 +168,7 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
         if (view.isMenuOpen())
             view.closeMenus();
         else {
-            Intent it=new Intent(this,DragAndDropActivity.class);
+            Intent it = new Intent(this, DragAndDropActivity.class);
             startActivity(it);
             Toast.makeText(this, "Content :" + position, Toast.LENGTH_SHORT).show();
         }

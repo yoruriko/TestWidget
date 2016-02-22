@@ -1,8 +1,5 @@
 package com.gospelware.testwidget.Adapter;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +20,10 @@ import butterknife.ButterKnife;
 public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ItemTouchHelperAdapter {
 
     private List<String> list;
-    private Context context;
+    private TestItemClickListener mListener;
 
-    public TestAdapter(List<String> list, Context context) {
+    public TestAdapter(List<String> list) {
         this.list = list;
-        this.context = context;
     }
 
     @Override
@@ -39,10 +35,26 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolder) holder).textView.setText(list.get(position));
+    public void onBindViewHolder( RecyclerView.ViewHolder holder, int position) {
+     final ViewHolder vh=((ViewHolder) holder);
+        vh.textView.setText(list.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onTestItemClick(v,vh.getLayoutPosition());
+            }
+        });
     }
 
+public interface TestItemClickListener{
+    void onTestItemClick(View view, int position);
+    void onTestItemDelete(View view,int position);
+}
+
+
+    public void setTestItemClickListener(TestItemClickListener listener){
+        this.mListener=listener;
+    }
 
     @Override
     public int getItemCount() {
@@ -69,32 +81,11 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     @Override
     public void onItemDismiss(RecyclerView.ViewHolder holder, int position) {
-        showDeleteDialog(holder, position);
+        mListener.onTestItemDelete(holder.itemView,position);
     }
 
 
-    public void showDeleteDialog(final RecyclerView.ViewHolder holder, final int position) {
 
-        AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Delete");
-        dialog.setMessage("Are you sure to delete?");
-
-        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                notifyItemChanged(position);
-            }
-        });
-
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Confirm", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                list.remove(position);
-                notifyItemRemoved(position);
-            }
-        });
-        dialog.show();
-    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
