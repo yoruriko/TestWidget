@@ -56,11 +56,6 @@ public class SlidingView extends HorizontalScrollView {
         this.mListener = listener;
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    }
-
     public void initMeasure() {
         if (!isMeasured) {
 

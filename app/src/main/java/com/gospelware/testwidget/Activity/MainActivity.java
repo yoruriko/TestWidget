@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
+    @OnClick(R.id.button_test2) void clickBtn2(){
+        Intent it=new Intent(this,ShareLocationClockActivity.class);
+        startActivity(it);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

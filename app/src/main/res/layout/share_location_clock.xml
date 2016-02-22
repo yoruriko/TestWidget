@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/profileBackgroundDark"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Activity.ShareLocationClockActivity"
+    tools:showIn="@layout/share_location_clock_main"
+    >
+    
+    <com.gospelware.testwidget.Widget.ShareLocationClock
+        android:id="@+id/clock"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"/>
+
+    <TextView
+        android:layout_below="@id/clock"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_time_remain"
+        android:text="8h 0m"
+        android:textColor="@color/textColorWhite"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_remaining"
+        android:textColor="@color/profileTextColor"
+        android:textSize="16sp"
+        android:text="remaining"
+        android:layout_below="@id/text_time_remain"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/text_remaining"
+        android:layout_centerHorizontal="true"
+        android:progressBackgroundTint="@color/profileBackgroundLight"
+        android:progressTint="@color/genderRed"
+        android:thumbTint="@color/genderRed"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

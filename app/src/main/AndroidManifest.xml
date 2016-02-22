@@ -15,8 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.Test1" android:theme="@style/NoSplitMotion"/>
-        <activity android:name=".Activity.DragAndDropActivity"/>
+        <activity
+            android:name=".Activity.Test1"
+            android:theme="@style/NoSplitMotion" />
+        <activity android:name=".Activity.DragAndDropActivity" />
+        <activity android:name=".Activity.ShareLocationClockActivity" android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

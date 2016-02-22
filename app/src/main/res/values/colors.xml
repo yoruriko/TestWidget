@@ -13,4 +13,6 @@
     <color name="profileBackgroundDark">#181818</color>
     <color name="profileBackgroundLight">#222222</color>
     <color name="black50">#50000000</color>
+
+    <color name="profileTextColor">#8c8c8c</color>
 </resources>
