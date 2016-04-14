@@ -27,7 +27,6 @@ public class SlidingView extends HorizontalScrollView {
 
     private Button buttonEdit;
     private Button buttonDelete;
-    private TextView textView;
 
     private int buttonWidth;
 
@@ -59,7 +58,6 @@ public class SlidingView extends HorizontalScrollView {
     public void initMeasure() {
         if (!isMeasured) {
 
-            textView = (TextView) findViewById(R.id.content);
             buttonDelete = (Button) findViewById(R.id.button_delete);
             buttonEdit = (Button) findViewById(R.id.button_edit);
 

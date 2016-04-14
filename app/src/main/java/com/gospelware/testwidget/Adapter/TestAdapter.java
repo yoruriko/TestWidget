@@ -35,25 +35,26 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     }
 
     @Override
-    public void onBindViewHolder( RecyclerView.ViewHolder holder, int position) {
-     final ViewHolder vh=((ViewHolder) holder);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        final ViewHolder vh = ((ViewHolder) holder);
         vh.textView.setText(list.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onTestItemClick(v,vh.getLayoutPosition());
+                mListener.onTestItemClick(v, vh.getLayoutPosition());
             }
         });
     }
 
-public interface TestItemClickListener{
-    void onTestItemClick(View view, int position);
-    void onTestItemDelete(View view,int position);
-}
+    public interface TestItemClickListener {
+        void onTestItemClick(View view, int position);
+
+        void onTestItemDelete(View view, int position);
+    }
 
 
-    public void setTestItemClickListener(TestItemClickListener listener){
-        this.mListener=listener;
+    public void setTestItemClickListener(TestItemClickListener listener) {
+        this.mListener = listener;
     }
 
     @Override
@@ -81,10 +82,8 @@ public interface TestItemClickListener{
 
     @Override
     public void onItemDismiss(RecyclerView.ViewHolder holder, int position) {
-        mListener.onTestItemDelete(holder.itemView,position);
+        mListener.onTestItemDelete(holder.itemView, position);
     }
-
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {

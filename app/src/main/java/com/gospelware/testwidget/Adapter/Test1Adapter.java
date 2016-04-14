@@ -61,7 +61,6 @@ public class Test1Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         @Bind(R.id.slidingView)
         SlidingView slidingView;
 
-        int itemPosition;
 
         public Test1ViewHolder(View itemView) {
             super(itemView);
@@ -94,7 +93,6 @@ public class Test1Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         vh.slidingView.setSlidingMenuOpenListener(this);
 
-        vh.itemPosition = position;
 
         vh.content.setText(list.get(position));
 

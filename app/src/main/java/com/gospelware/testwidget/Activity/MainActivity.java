@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         Intent it=new Intent(this,ShareLocationClockActivity.class);
         startActivity(it);
     }
+    @OnClick(R.id.button_test3) void clickBtn3(){
+        Intent it = new Intent(this,TabActivity.class);
+        startActivity(it);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

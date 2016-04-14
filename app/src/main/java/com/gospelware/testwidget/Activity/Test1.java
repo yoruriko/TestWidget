@@ -120,7 +120,7 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
         initList();
     }
 
-    public  void  initView(){
+    public void initView() {
 
         toolbar.setBackgroundResource(R.drawable.toolbarmask);
         toolbar.setTitle("Itineraries");
@@ -139,7 +139,8 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
             }
         });
     }
-    public  void initList(){
+
+    public void initList() {
 
         list = new ArrayList<>();
 
@@ -165,9 +166,9 @@ public class Test1 extends AppCompatActivity implements Test1Adapter.OnSlidingIt
     @Override
     public void onItemContentClicked(SlidingView view, int position) {
 
-        if (view.isMenuOpen())
+        if (isEditing) {
             view.closeMenus();
-        else {
+        } else {
             Intent it = new Intent(this, DragAndDropActivity.class);
             startActivity(it);
             Toast.makeText(this, "Content :" + position, Toast.LENGTH_SHORT).show();
