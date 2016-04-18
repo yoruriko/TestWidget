@@ -19,8 +19,15 @@
             android:name=".Activity.Test1"
             android:theme="@style/NoSplitMotion" />
         <activity android:name=".Activity.DragAndDropActivity" />
-        <activity android:name=".Activity.ShareLocationClockActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Activity.TabActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Activity.ShareLocationClockActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.TabActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.CustomiseSwipeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

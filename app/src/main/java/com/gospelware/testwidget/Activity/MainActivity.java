@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         Intent it = new Intent(this,TabActivity.class);
         startActivity(it);
     }
+    @OnClick(R.id.button_test4) void clickBtn4(){
+        Intent it = new Intent(this,CustomiseSwipeActivity.class);
+        startActivity(it);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
