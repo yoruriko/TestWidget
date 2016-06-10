@@ -28,6 +28,17 @@
         <activity
             android:name=".Activity.CustomiseSwipeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.BottomBarActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.BezierActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.BallActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.TestLiquidButton"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

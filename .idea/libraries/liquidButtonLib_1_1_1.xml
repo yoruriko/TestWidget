@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="liquidButtonLib-1.1.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.gospelware.liquidbutton/liquidButtonLib/1.1.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.gospelware.liquidbutton/liquidButtonLib/1.1.1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.gospelware.liquidbutton/liquidButtonLib/1.1.1/52d321afcbb6846cc2ad61f29c9e7800f2a998d3/liquidButtonLib-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

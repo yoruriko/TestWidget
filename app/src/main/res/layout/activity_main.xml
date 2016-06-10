@@ -34,4 +34,25 @@
         android:layout_height="wrap_content"
         android:text="swipe layout" />
 
+    <Button
+        android:id="@+id/button_test5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bottom Navigation" />
+
+    <Button
+        android:id="@+id/button_test6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BezierView" />
+    <Button
+        android:id="@+id/button_test7"
+        android:text="BallView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_test8"
+        android:text="Liquid Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

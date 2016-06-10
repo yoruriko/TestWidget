@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_pet"
+        android:icon="@drawable/ic_pets_black_24dp"
+        android:title="pet" />
+    <item
+        android:id="@+id/item_flower"
+        android:icon="@drawable/ic_local_flower_black_24dp"
+        android:title="flower" />
+    <item
+        android:id="@+id/item_people"
+        android:icon="@drawable/ic_people_black_24dp"
+        android:title="people" />
+    <item
+        android:id="@+id/item_car"
+        android:icon="@drawable/ic_car_black_24dp"
+        android:title="car" />
+</menu>

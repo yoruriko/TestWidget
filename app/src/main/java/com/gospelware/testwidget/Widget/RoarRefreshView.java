@@ -5,8 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
@@ -40,6 +42,7 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
     private int mFoursquareHeight = 50;
     private float mRoarLeftOffset;
     private float mRoarTopOffset;
+    private Paint alphaPaint;
 
 //    private int mRoarFaceSize = 100;
 //    private float mRoarFaceLeftOffset;
@@ -175,13 +178,21 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
         Matrix matrix = mMatrix;
         matrix.reset();
         float dragPercent = mPercent;
-        float scalePercentDelta = dragPercent - SCALE_START_PERCENT;
-        if(scalePercentDelta>0){
-            float offsetX = (mScreenWidth-mFoursquare.getWidth())/2;
-            float offsetY = mParent.getTotalDragDistance() - mFoursquareHeight -10;
-            matrix.postTranslate(offsetX,offsetY);
-            canvas.drawBitmap(mFoursquare,matrix,null);
+//        float scalePercentDelta = dragPercent - SCALE_START_PERCENT;
+
+        float offsetX = (mScreenWidth-mFoursquare.getWidth())/2;
+        float offsetY = mParent.getTotalDragDistance() - mFoursquareHeight -10;
+        matrix.postTranslate(offsetX,offsetY);
+
+        if(alphaPaint==null){
+            alphaPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         }
+        int alpha = Math.round(255*Math.min(1,dragPercent));
+        alphaPaint.setAlpha(alpha);
+        canvas.drawBitmap(mFoursquare,matrix,alphaPaint);
+
+        Log.i("test","alpha: "+alpha);
+
     }
 
 //    private void drawRoarFace(Canvas canvas){
