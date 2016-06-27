@@ -22,6 +22,8 @@ import com.gospelware.testwidget.R;
  */
 public class RoarRefreshView extends BaseRefreshView implements Animatable {
 
+    private final static String TAG = "DEBUG:" + RoarRefreshView.class.getSimpleName();
+
     private static final float SCALE_START_PERCENT = 0.5f;
     private static final int ANIMATION_DURATION = 1000;
 
@@ -75,7 +77,7 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
 
         mScreenWidth = viewWidth;
 
-        mRoarLeftOffset = (0.5f * (float) mScreenWidth)-(mRoarSize/2);
+        mRoarLeftOffset = (0.5f * (float) mScreenWidth) - (mRoarSize / 2);
         mRoarTopOffset = (mParent.getTotalDragDistance() * 0.1f);
 
 //        mRoarFaceLeftOffset = mRoarLeftOffset +(mRoarFaceSize/2);
@@ -92,14 +94,14 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
         mRoar = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mane, options);
         mRoar = Bitmap.createScaledBitmap(mRoar, mRoarSize, mRoarSize, true);
 
-        mRoarFace = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.lion,options);
+        mRoarFace = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.lion, options);
 //        mRoarFace = Bitmap.createScaledBitmap(mRoarFace,mRoarFaceSize,mRoarFaceSize,true);
-        mRoarFace = Bitmap.createScaledBitmap(mRoarFace,mRoarSize,mRoarSize,true);
+        mRoarFace = Bitmap.createScaledBitmap(mRoarFace, mRoarSize, mRoarSize, true);
 
-        mFoursquare = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.foursquare,options);
-        float scale = (float)mFoursquareHeight/mFoursquare.getHeight();
-        int width = Math.round(scale*mFoursquare.getWidth());
-        mFoursquare = Bitmap.createScaledBitmap(mFoursquare,width,mFoursquareHeight,true);
+        mFoursquare = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.foursquare, options);
+        float scale = (float) mFoursquareHeight / mFoursquare.getHeight();
+        int width = Math.round(scale * mFoursquare.getWidth());
+        mFoursquare = Bitmap.createScaledBitmap(mFoursquare, width, mFoursquareHeight, true);
     }
 
     @Override
@@ -123,8 +125,9 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
         canvas.translate(0, mTop);
         canvas.clipRect(0, -mTop, mScreenWidth, mParent.getTotalDragDistance());
 
-        drawFoursquare(canvas);
+
         drawRoar(canvas);
+        drawFoursquare(canvas);
 //        drawRoarFace(canvas);
         canvas.restoreToCount(saveCount);
     }
@@ -170,28 +173,26 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
                 offsetX,
                 offsetY);
 
-        canvas.drawBitmap(mRoar,rotateMatrix, null);
-        canvas.drawBitmap(mRoarFace,matrix,null);
+        canvas.drawBitmap(mRoar, rotateMatrix, null);
+        canvas.drawBitmap(mRoarFace, matrix, null);
     }
 
-    private void drawFoursquare(Canvas canvas){
+    private void drawFoursquare(Canvas canvas) {
         Matrix matrix = mMatrix;
         matrix.reset();
         float dragPercent = mPercent;
 //        float scalePercentDelta = dragPercent - SCALE_START_PERCENT;
 
-        float offsetX = (mScreenWidth-mFoursquare.getWidth())/2;
-        float offsetY = mParent.getTotalDragDistance() - mFoursquareHeight -10;
-        matrix.postTranslate(offsetX,offsetY);
+        float offsetX = (mScreenWidth - mFoursquare.getWidth()) / 2;
+        float offsetY = mParent.getTotalDragDistance() - mFoursquareHeight - 10;
+        matrix.postTranslate(offsetX, offsetY);
 
-        if(alphaPaint==null){
+        if (alphaPaint == null) {
             alphaPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         }
-        int alpha = Math.round(255*Math.min(1,dragPercent));
+        int alpha = Math.round(255 * Math.min(1, dragPercent));
         alphaPaint.setAlpha(alpha);
-        canvas.drawBitmap(mFoursquare,matrix,alphaPaint);
-
-        Log.i("test","alpha: "+alpha);
+        canvas.drawBitmap(mFoursquare, matrix, alphaPaint);
 
     }
 
@@ -226,7 +227,6 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
 //    }
 
 
-
     public void setPercent(float percent) {
         mPercent = percent;
     }
@@ -248,7 +248,7 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
 
     @Override
     public void setBounds(int left, int top, int right, int bottom) {
-        super.setBounds(left, top, right,top);
+        super.setBounds(left, top, right, top);
     }
 
     @Override
@@ -274,7 +274,7 @@ public class RoarRefreshView extends BaseRefreshView implements Animatable {
         mAnimation = new Animation() {
             @Override
             public void applyTransformation(float interpolatedTime, Transformation t) {
-                setRotate(interpolatedTime);
+                setRotate(1f - interpolatedTime);
             }
         };
         mAnimation.setRepeatCount(Animation.INFINITE);
